@@ -1,3 +1,5 @@
+using Session_1___MVC.CustomMiddleWare;
+
 namespace Session_1___MVC
 {
     public class Program
@@ -11,6 +13,14 @@ namespace Session_1___MVC
 
             var app = builder.Build();
 
+            //app.Use(async (context, next) =>
+            //{
+            //    Console.WriteLine("hello");
+            //    await next(context);
+            //    Console.WriteLine("Bye");
+            //});
+
+            app.UseMiddleware<RequestTimingMidlleware>();
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
